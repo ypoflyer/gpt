@@ -1,21 +1,114 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-  <title>OpenAI Quickstart</title>
-  <link
-    rel="shortcut icon"
-    href="{{ url_for('static', filename='dog.png') }}"
-  />
-  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" />
-</head>
+    <meta charset="UTF-8">
+    <title>CSS收缩导航样式 www.bootstrapmb.com</title>
 
+    <link rel="stylesheet" href="./static/style.css">
+</head>
 <body>
-  <img src="{{ url_for('static', filename='dog.png') }}" class="icon" />
-  <h3>Name my pet</h3>
-  <form action="/" method="post">
-    <input type="text" name="animal" placeholder="Enter an animal" required />
-    <input type="submit" value="Generate names" />
-  </form>
-  {% if result %}
-  <div class="result">{{ result }}</div>
-  {% endif %}
+  <div class="app-container">
+    <div class="left-menu">
+      <div class="logo">
+          <i class="fa fa-align-justify"></i>
+          <div>幺幺五五</div>
+      </div>
+      <div class="accordion">
+          <div class="section">
+              <input type="radio" name="accordion-1" id="section-1" checked="checked" />
+              <label for="section-1"><span>聊天窗口</span></label>
+              <div class="content">
+                  <ul>
+                      <li><i class="fa fa-share"></i><span>聊天窗口1</span></li>
+                      <li><i class="fa fa-archive"></i><span>聊天窗口2</span></li>
+                  </ul>
+              </div>
+          </div>
+          <div class="section">
+              <input type="radio" name="accordion-1" id="section-2" value="toggle" />
+              <label for="section-2"> <span>服务选项</span></label>
+              <div class="content">
+                  <ul>
+                      <li><i class="fa fa-cog"></i><span>清除所有会话</span></li>
+                      <li><i class="fa fa-cog"></i><span>升级会员</span></li>
+                      <li><i class="fa fa-group"></i><span>订单记录</span></li>
+                      <li><i class="fa fa-sitemap"></i><span>操作指南</span></li>
+                      <li><i class="fa fa-sitemap"></i><span>联系客服</span></li>
+                      <li><i class="fa fa-sitemap"></i><span>免责生命</span></li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+    </div>
+    <div class="app-content">
+      <!-- <div class="app-content-header"> -->
+        <div class="chat-body"></div>
+        <div class="chat-input">
+          <div class="input-sec"><input type="text" id="txtInput" placeholder="试着与最强AI对话吧" autofocus /></div>
+          <div class="send"><img src="https://haiyong.site/img/svg/send.svg" alt="send" /></div>
+        </div>
+      <!-- </div> -->
+    </div>
+  </div>
+    <!-- partial:index.partial.html -->
+
+    <!-- partial -->
+    <!-- <script src='jquery.min.js'></script> -->
+    <!-- <script src="./script.js"></script> -->
+    <script>
+      const responseObj = {
+        你好: "你好，我是最强人工智能ChatGPT，我能回答你所有问题，快来和我聊天吧！",
+        五块钱怎么花三天: "坐公交回去找妈妈",				
+        你是小黑子吗: "不，我不是小黑子。我是OpenAI的聊天机器人模型ChatGPT",
+        你为什么和我聊天: "只因你太美",
+        嘿: "嘿！ 这是怎么回事",
+        今天几号: new Date().toDateString(),
+        几点了: new Date().toLocaleTimeString(),
+      };
+      const chatBody = document.querySelector(".chat-body");
+      const txtInput = document.querySelector("#txtInput");
+      const send = document.querySelector(".send");
+      send.addEventListener("click", () => renderUserMessage());
+      txtInput.addEventListener("keyup", (event) => {
+        if (event.keyCode === 13) {
+          renderUserMessage();
+        }
+      });
+      const renderUserMessage = () => {
+        const userInput = txtInput.value;
+        renderMessageEle(userInput, "user");
+        txtInput.value = "";
+        setTimeout(() => {
+          renderChatbotResponse(userInput);
+          setScrollPosition();
+        }, 600);
+      };
+      const renderChatbotResponse = (userInput) => {
+        const res = getChatbotResponse(userInput);
+        renderMessageEle(res);
+      };
+      const renderMessageEle = (txt, type) => {
+        let className = "user-message";
+        if (type !== "user") {
+          className = "chatbot-message";
+        }
+        const messageEle = document.createElement("div");
+        const txtNode = document.createTextNode(txt);
+        messageEle.classList.add(className);
+        messageEle.append(txtNode);
+        chatBody.append(messageEle);
+      };
+      const getChatbotResponse = (userInput) => {
+        return responseObj[userInput] == undefined ?
+          "听不太懂呢试试输点别的" :
+          responseObj[userInput];
+      };
+      const setScrollPosition = () => {
+        if (chatBody.scrollHeight > 0) {
+          chatBody.scrollTop = chatBody.scrollHeight;
+        }
+      };
+  
+    </script>	
 </body>
+</html>

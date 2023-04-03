@@ -1,0 +1,212 @@
+@import url(https://fonts.googleapis.com/css?family=Quicksand:300,400,700);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css);
+
+.app-container {
+  border-radius: 4px;
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  max-width: 1280px;
+  display: flex;
+  overflow: hidden;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  max-width: 2000px;
+  margin: 0 auto;
+  flex-direction: row;
+  flex: 1;
+}
+
+.accordion {
+  color: #FFF;
+  width: 100%;
+}
+.accordion .section {
+  width: 100%;
+}
+.accordion .section input[type='radio'] {
+  display: none;
+}
+.accordion .section input[type='radio']:checked + label {
+  background: #363636;
+}
+.accordion .section input[type='radio']:checked + label:before {
+  content: " ";
+  position: absolute;
+  border-left: 3px solid #21CCFC;
+  height: 100%;
+  left: 0;
+}
+.accordion .section input[type='radio']:checked ~ .content {
+  max-height: 300px;
+  opacity: 1;
+  z-index: 10;
+  overflow-y: auto;
+}
+.accordion .section label {
+  position: relative;
+  cursor: pointer;
+  padding: 10px 20px;
+  display: table;
+  background: #222;
+  width: 100%;
+  -webkit-transition: background 0.3s ease-in-out;
+  -moz-transition: background 0.3s ease-in-out;
+  -ms-transition: background 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+.accordion .section label:before {
+  content: " ";
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 1px;
+  border-top: 1px solid #363636;
+}
+.accordion .section label:hover {
+  background: #363636;
+}
+.accordion .section label span {
+  display: table-cell;
+  vertical-align: middle;
+}
+.accordion .section:last-of-type {
+  border-bottom: 1px solid #363636;
+}
+.accordion .section .content {
+  max-height: 0;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -ms-transition: all 0.4s;
+  transition: all 0.4s;
+  opacity: 0;
+  position: relative;
+  overflow-y: hidden;
+}
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  background: #666;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.left-menu {
+  background: #222;
+  width: 20%;
+  position:absolute;
+  top: 0;
+  bottom: 0;
+}
+
+.app-content {
+  background: #666;
+  width: 80%;
+  position:absolute;
+  top: 0;
+  bottom: 0;
+  left: 200px;
+}
+
+.accordion {
+  font-size: 14px;
+}
+.accordion .section .content {
+  padding: 0 15px;
+}
+.accordion .section input[type='radio'] {
+  display: none;
+}
+.accordion .section input[type='radio']:checked ~ .content {
+  padding: 15px;
+}
+
+ul {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+ul li {
+  padding: 10px;
+}
+ul li i {
+  font-size: 13px;
+  width: 15px;
+  margin-right: 15px;
+}
+ul li:hover {
+  cursor: pointer;
+}
+ul li:hover i {
+  color: #21CCFC;
+}
+
+.logo {
+  padding: 30px 10px;
+  width: 200px;
+  text-align: center;
+  color: #FFF;
+  font-size: 20px;
+}
+.logo i {
+  font-size: 70px;
+  color: #21CCFC;
+}
+.chat-body {
+  height: 465px;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 10px;
+  align-items: flex-end;
+  overflow-y: auto;
+}
+
+.chat-input {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #ccc;
+}
+.input-sec {
+  padding-left: 10%;
+  flex: 9;
+}
+.send {
+  flex: 2;
+  padding-right: 4px;
+}
+
+#txtInput {
+  line-height: 10px;
+  padding: 8px 10px;
+  border: none;
+  outline: none;
+  caret-color: black;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.chatbot-message,
+.user-message {
+  padding: 8px;
+  background: #ccc;
+  margin: 5px;
+  width: max-content;
+  border-radius: 10px 3px 10px 10px;
+}
+.chatbot-message {
+  background: #0652c0;
+  color: var(--light-color);
+  align-self: flex-start;
+  border-radius: 10px 10px 3px 10px;
+}

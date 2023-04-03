@@ -35,3 +35,5 @@ Names:""".format(
     )
 if __name__ =='__main__':
     app.run(host='172.31.31.40',port=5000)
+#if __name__ =='__main__':
+#    app.run(debug=True)
