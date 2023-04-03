@@ -42,9 +42,11 @@
     </div>
     <div class="app-content">
       <!-- <div class="app-content-header"> -->
-        <div class="chat-body"></div>
+        {% if result %}
+        <div class="chat-body">{{ result }}</div>
+        {% endif %}
         <div class="chat-input">
-          <div class="input-sec"><input type="text" id="txtInput" placeholder="试着与最强AI对话吧" autofocus /></div>
+          <div class="input-sec" name="input_text"><input type="text" id="txtInput" placeholder="试着与最强AI对话吧" autofocus /></div>
           <div class="send"><img src="https://haiyong.site/img/svg/send.svg" alt="send" /></div>
         </div>
       <!-- </div> -->

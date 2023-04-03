@@ -10,10 +10,10 @@ openai.api_key = "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"
 @app.route("/", methods=("GET", "POST"))
 def index():
     if request.method == "POST":
-        animal = request.form["animal"]
+        input_text = request.form["input_text"]
         response = openai.Completion.create(
             model="text-davinci-003",
-            prompt=generate_prompt(animal),
+            prompt=input_text,
             temperature=0.6,
         )
         return redirect(url_for("index", result=response.choices[0].text))
@@ -21,19 +21,21 @@ def index():
     result = request.args.get("result")
     return render_template("index.html", result=result)
 
+####
+#def generate_prompt(input_text):
+#    return """Suggest three names for an animal that is a superhero.
 
-def generate_prompt(animal):
-    return """Suggest three names for an animal that is a superhero.
+#Animal: Cat
+#Names: Captain Sharpclaw, Agent Fluffball, The Incredible Feline
+#Animal: Dog
+#Names: Ruff the Protector, Wonder Canine, Sir Barks-a-Lot
+#Animal: {}
+#Names:""".format(
+#        animal.capitalize()
+#   )
+#####
 
-Animal: Cat
-Names: Captain Sharpclaw, Agent Fluffball, The Incredible Feline
-Animal: Dog
-Names: Ruff the Protector, Wonder Canine, Sir Barks-a-Lot
-Animal: {}
-Names:""".format(
-        animal.capitalize()
-    )
-if __name__ =='__main__':
-    app.run(host='172.31.31.40',port=5000)
 #if __name__ =='__main__':
-#    app.run(debug=True)
+#    app.run(host='172.31.31.40',port=5000)
+if __name__ =='__main__':
+    app.run(debug=True)
