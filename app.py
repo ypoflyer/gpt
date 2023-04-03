@@ -5,7 +5,7 @@ from flask import Flask, redirect, render_template, request, url_for
 
 app = Flask(__name__)
 openai.api_key = os.getenv("OPENAI_API_KEY")
-
+openai.api_key = "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"
 
 @app.route("/", methods=("GET", "POST"))
 def index():
@@ -33,3 +33,5 @@ Animal: {}
 Names:""".format(
         animal.capitalize()
     )
+if __name__ =='__main__':
+    app.run(host='172.31.31.40',port=5000)
