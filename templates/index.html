@@ -48,15 +48,43 @@
         {% endif %}
         <div class="chat-input">
           <form action="/" method="post">
-            <input type="text_input" name="input_text" placeholder="Enter" required />
+            <input type="text_input" id="tiput" name="input_text" placeholder="Enter" required />
             <!-- <div class="input-sec"><input type="text" id="txtInput" placeholder="在这里写" autofocus /></div> -->
             <!-- <div class="submit" type="button" ></div> -->
-            <input type="submit" value="Generate names" />
+            <input type="submit" id="sendmessage" value="Generate names" />
           </form>
         </div>
       <!-- </div> -->
     </div>
   </div>
+
+  <script>
+    const chatBody = document.querySelector(".chat-body");
+    const txtInput = document.getElementById("tiput");
+    const send = document.getElementById("sendmessage");
+    // 设置监听器
+    send.addEventListener("click", () => renderUserMessage());
+    txtInput.addEventListener("keyup", (event) => {
+        if (event.keyCode === 13) {
+          renderUserMessage();
+        }
+      });
+    // 方法
+    const renderUserMessage = () => {
+      const userInput = txtInput.value;
+      renderMessageEle(userInput, "user");
+      txtInput.value = "";
+      setTimeout(() => {
+        renderChatbotResponse(userInput);
+        setScrollPosition();
+      }, 600);
+    };
+    const setScrollPosition = () => {
+      if (chatBody.scrollHeight > 0) {
+        chatBody.scrollTop = chatBody.scrollHeight;
+      }
+    }; 
+  </script>
     <!-- partial:index.partial.html -->
 
     <!-- partial -->
