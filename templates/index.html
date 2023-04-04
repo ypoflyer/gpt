@@ -42,12 +42,17 @@
     </div>
     <div class="app-content">
       <!-- <div class="app-content-header"> -->
+        <div class="chat-body"></div>
         {% if result %}
         <div class="chat-body">{{ result }}</div>
         {% endif %}
         <div class="chat-input">
-          <div class="input-sec" name="input_text"><input type="text" id="txtInput" placeholder="试着与最强AI对话吧" autofocus /></div>
-          <div class="send"><img src="https://haiyong.site/img/svg/send.svg" alt="send" /></div>
+          <form action="/" method="post">
+            <input type="text_input" name="input_text" placeholder="Enter" required />
+            <!-- <div class="input-sec"><input type="text" id="txtInput" placeholder="在这里写" autofocus /></div> -->
+            <!-- <div class="submit" type="button" ></div> -->
+            <input type="submit" value="Generate names" />
+          </form>
         </div>
       <!-- </div> -->
     </div>
@@ -57,16 +62,8 @@
     <!-- partial -->
     <!-- <script src='jquery.min.js'></script> -->
     <!-- <script src="./script.js"></script> -->
+    <!--  
     <script>
-      const responseObj = {
-        你好: "你好，我是最强人工智能ChatGPT，我能回答你所有问题，快来和我聊天吧！",
-        五块钱怎么花三天: "坐公交回去找妈妈",				
-        你是小黑子吗: "不，我不是小黑子。我是OpenAI的聊天机器人模型ChatGPT",
-        你为什么和我聊天: "只因你太美",
-        嘿: "嘿！ 这是怎么回事",
-        今天几号: new Date().toDateString(),
-        几点了: new Date().toLocaleTimeString(),
-      };
       const chatBody = document.querySelector(".chat-body");
       const txtInput = document.querySelector("#txtInput");
       const send = document.querySelector(".send");
@@ -109,8 +106,7 @@
         if (chatBody.scrollHeight > 0) {
           chatBody.scrollTop = chatBody.scrollHeight;
         }
-      };
-  
-    </script>	
+      };  
+    </script>	-->
 </body>
 </html>

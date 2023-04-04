@@ -164,6 +164,7 @@ ul li:hover i {
 }
 .chat-body {
   height: 465px;
+  width: 500px;
   display: flex;
   flex-direction: column;
   padding: 8px 10px;
@@ -178,11 +179,10 @@ ul li:hover i {
   border-top: 1px solid #ccc;
 }
 .input-sec {
-  padding-left: 10%;
   flex: 9;
 }
 .send {
-  flex: 2;
+  flex: 1;
   padding-right: 4px;
 }
 
@@ -210,3 +210,4 @@ ul li:hover i {
   align-self: flex-start;
   border-radius: 10px 10px 3px 10px;
 }
+

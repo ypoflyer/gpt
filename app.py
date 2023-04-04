@@ -11,6 +11,7 @@ openai.api_key = "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"
 def index():
     if request.method == "POST":
         input_text = request.form["input_text"]
+        print("input is ", input_text)
         response = openai.Completion.create(
             model="text-davinci-003",
             prompt=input_text,
@@ -35,7 +36,7 @@ def index():
 #   )
 #####
 
-#if __name__ =='__main__':
-#    app.run(host='172.31.31.40',port=5000)
 if __name__ =='__main__':
-    app.run(debug=True)
+    app.run(host='172.31.31.40',port=5000)
+#if __name__ =='__main__':
+#    app.run(debug=True)
